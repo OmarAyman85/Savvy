@@ -1,6 +1,7 @@
 package com.example.savvy.controller;
 
 import com.example.savvy.dto.GraphDTO;
+import com.example.savvy.dto.StatsDTO;
 import com.example.savvy.services.stats.StatsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,5 +20,10 @@ public class statsController {
     @GetMapping("/chart")
     public ResponseEntity<GraphDTO> getChartData() {
         return ResponseEntity.ok(statsService.getChartData());
+    }
+
+    @GetMapping()
+    public ResponseEntity<?> getStats() {
+        return ResponseEntity.ok(statsService.getStats());
     }
 }
