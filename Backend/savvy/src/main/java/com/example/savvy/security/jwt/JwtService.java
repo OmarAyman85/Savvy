@@ -1,4 +1,4 @@
-package com.example.savvy.services.user;
+package com.example.savvy.security.jwt;
 
 import com.example.savvy.model.entity.User;
 import io.jsonwebtoken.Claims;
