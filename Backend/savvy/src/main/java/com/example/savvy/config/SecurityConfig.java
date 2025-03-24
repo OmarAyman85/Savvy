@@ -1,6 +1,5 @@
 package com.example.savvy.config;
 
-import com.example.savvy.security.filter.JwtAuthenticationFilter;
 import com.example.savvy.security.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -29,8 +28,9 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
-                        req -> req.requestMatchers("/login/**", "/register/**")
+                        req -> req.requestMatchers("/api/login/**", "/api/register/**")
                                 .permitAll()
+                                .requestMatchers("/api/admin/**").hasAuthority("ADMIN")
                                 .anyRequest()
                                 .authenticated()
                 ).userDetailsService(userDetailsService)

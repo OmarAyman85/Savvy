@@ -24,17 +24,16 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String email;
 
-    private String password;
-
     @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "last_name")
     private String lastName;
 
+    private String password;
+
     @Enumerated(value = EnumType.STRING)
     private Role role;
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

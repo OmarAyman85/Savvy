@@ -1,4 +1,4 @@
-package com.example.savvy.security.filter;
+package com.example.savvy.config;
 
 import com.example.savvy.security.jwt.JwtService;
 import com.example.savvy.security.service.UserDetailsServiceImpl;
