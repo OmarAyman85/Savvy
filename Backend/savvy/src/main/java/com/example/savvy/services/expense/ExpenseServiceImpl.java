@@ -1,7 +1,7 @@
 package com.example.savvy.services.expense;
 
 import com.example.savvy.dto.ExpenseDTO;
-import com.example.savvy.entity.Expense;
+import com.example.savvy.model.entity.Expense;
 import com.example.savvy.repository.ExpenseRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;

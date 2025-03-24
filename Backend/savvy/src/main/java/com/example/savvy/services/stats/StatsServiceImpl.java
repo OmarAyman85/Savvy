@@ -2,8 +2,8 @@ package com.example.savvy.services.stats;
 
 import com.example.savvy.dto.GraphDTO;
 import com.example.savvy.dto.StatsDTO;
-import com.example.savvy.entity.Expense;
-import com.example.savvy.entity.Income;
+import com.example.savvy.model.entity.Expense;
+import com.example.savvy.model.entity.Income;
 import com.example.savvy.repository.ExpenseRepository;
 import com.example.savvy.repository.IncomeRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,15 +1,13 @@
-package com.example.savvy.entity;
+package com.example.savvy.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
 
 @Entity  // Marks this class as a JPA entity (maps to a database table)
 @Data    // Generates getter, setter, toString, equals, and hashCode methods
+@Table(name = "expense")
 public class Expense {
 
     @Id  // Marks this field as the Primary Key

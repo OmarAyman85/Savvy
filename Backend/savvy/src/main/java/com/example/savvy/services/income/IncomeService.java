@@ -1,7 +1,7 @@
 package com.example.savvy.services.income;
 
 import com.example.savvy.dto.IncomeDTO;
-import com.example.savvy.entity.Income;
+import com.example.savvy.model.entity.Income;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.example.savvy.repository;
 
-import com.example.savvy.entity.Expense;
+import com.example.savvy.model.entity.Expense;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

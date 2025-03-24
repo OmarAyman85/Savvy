@@ -2,7 +2,7 @@ package com.example.savvy.controller;
 
 
 import com.example.savvy.dto.IncomeDTO;
-import com.example.savvy.entity.Income;
+import com.example.savvy.model.entity.Income;
 import com.example.savvy.services.income.IncomeService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
