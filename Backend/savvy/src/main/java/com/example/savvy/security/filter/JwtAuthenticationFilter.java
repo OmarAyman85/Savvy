@@ -1,7 +1,7 @@
 package com.example.savvy.security.filter;
 
 import com.example.savvy.security.jwt.JwtService;
-import com.example.savvy.security.service.UserDetailsImpl;
+import com.example.savvy.security.service.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,7 +22,7 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
-    private final UserDetailsImpl userDetailsService;
+    private final UserDetailsServiceImpl userDetailsService;
 
 
     @Override
