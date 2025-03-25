@@ -8,6 +8,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class IncomeController {
     private final IncomeService incomeService;
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public ResponseEntity<?> createIncome(@RequestBody IncomeDTO incomeDTO) {
         Income createdIncome = incomeService.createIncome(incomeDTO);
@@ -43,6 +45,7 @@ public class IncomeController {
         }
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<?> updateIncome(@PathVariable Long id, @RequestBody IncomeDTO incomeDTO) {
         try {
@@ -54,6 +57,7 @@ public class IncomeController {
         }
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteIncome(@PathVariable Long id) {
         try {

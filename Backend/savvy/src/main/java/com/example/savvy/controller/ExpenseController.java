@@ -7,6 +7,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController  // Marks this class as a Spring MVC REST Controller (handles HTTP requests)
@@ -23,6 +24,7 @@ public class ExpenseController {
      * @param dto The ExpenseDTO object received in the request body.
      * @return ResponseEntity with the created Expense or a BAD_REQUEST status if the creation fails.
      */
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping  // Maps this method to an HTTP POST request (URL: /api/expense)
     public ResponseEntity<?> postExpense(@RequestBody ExpenseDTO expenseDTO) {
         Expense createdExpense = expenseService.postExpense(expenseDTO);  // Call service layer to create an expense
@@ -52,6 +54,7 @@ public class ExpenseController {
         }
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<?> updateExpense(@PathVariable Long id, @RequestBody ExpenseDTO expenseDTO) {
         try {
@@ -63,6 +66,7 @@ public class ExpenseController {
         }
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteExpense(@PathVariable Long id) {
         try {
