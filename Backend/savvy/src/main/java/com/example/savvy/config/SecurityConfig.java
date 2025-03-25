@@ -27,16 +27,23 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(
-                        req -> req.requestMatchers("/api/login/**", "/api/register/**")
-                                .permitAll()
-                                .requestMatchers("/api/admin/**").hasAuthority("ADMIN")
-                                .anyRequest()
-                                .authenticated()
-                ).userDetailsService(userDetailsService)
-                .sessionManagement(
-                        session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                ).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/", "/api/login", "/api/register", "/oauth2/**").permitAll()
+                        .requestMatchers("/api/admin/**").hasAuthority("ADMIN")
+                        .anyRequest().authenticated()
+                )
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/login") // Custom login page instead of redirecting
+                        .defaultSuccessUrl("/", true) // Redirect after successful login
+                )
+                .userDetailsService(userDetailsService)
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
+                        .permitAll()
+                )
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 

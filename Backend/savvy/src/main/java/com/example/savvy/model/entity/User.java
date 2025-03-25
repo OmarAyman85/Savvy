@@ -12,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Data
+//@Builder it is used for implementing the builder design pattern in the creation of users
 @Table(name = "user")
 public class User implements UserDetails {
 
@@ -19,6 +20,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(unique = true)
     private String username;
 
     @Column(unique = true)

@@ -1,6 +1,7 @@
 package com.example.savvy.services.authentication;
 
-import com.example.savvy.model.entity.AuthenticationResponse;
+import com.example.savvy.dto.AuthenticationResponse;
+import com.example.savvy.dto.UserDTO;
 import com.example.savvy.model.entity.User;
 import com.example.savvy.repository.UserRepository;
 import com.example.savvy.security.jwt.JwtService;
@@ -9,8 +10,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +20,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(User request) {
+    public AuthenticationResponse register(UserDTO request) {
         User user = new User();
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
@@ -39,7 +38,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
         return new AuthenticationResponse(token);
     }
 
-    public AuthenticationResponse login(User request) {
+    public AuthenticationResponse authenticate(UserDTO request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
@@ -51,6 +50,5 @@ public class AuthenticationServiceImpl implements AuthenticationService{
         String token = jwtService.generateToken(user);
 
         return new AuthenticationResponse(token);
-
     }
 }

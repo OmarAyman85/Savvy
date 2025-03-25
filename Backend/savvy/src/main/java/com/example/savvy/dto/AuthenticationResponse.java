@@ -1,4 +1,4 @@
-package com.example.savvy.model.entity;
+package com.example.savvy.dto;
 
 import lombok.Data;
 
