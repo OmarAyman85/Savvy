@@ -15,7 +15,7 @@ public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String home() {
         return "Welcome to Savvy";
     }

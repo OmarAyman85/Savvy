@@ -30,19 +30,19 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/api/login", "/api/register", "/oauth2/**").permitAll()
+                        .requestMatchers("/api", "/api/login", "/api/register", "/oauth2/**").permitAll()
 //                        .requestMatchers("/api/admin/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2Login(oauth2 -> oauth2
-                        .loginPage("/login") // Custom login page instead of redirecting
-                        .defaultSuccessUrl("/", true) // Redirect after successful login
+                        .loginPage("/api/login") // Custom login page instead of redirecting
+                        .defaultSuccessUrl("/api", true) // Redirect after successful login
                 )
                 .userDetailsService(userDetailsService)
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/")
+                        .logoutSuccessUrl("/api")
                         .permitAll()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
