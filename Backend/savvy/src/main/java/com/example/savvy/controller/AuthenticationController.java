@@ -2,6 +2,7 @@ package com.example.savvy.controller;
 
 import com.example.savvy.dto.AuthenticationResponse;
 import com.example.savvy.dto.UserDTO;
+import com.example.savvy.dto.VerificationRequest;
 import com.example.savvy.services.authentication.AuthenticationService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,13 +26,27 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> registerUser(@RequestBody UserDTO request) {
-        return ResponseEntity.ok(authenticationService.register(request));
+    public ResponseEntity<?> registerUser(@RequestBody UserDTO request) {
+        var response = authenticationService.register(request);
+        if (request.isMfaEnabled()) {
+            return ResponseEntity.ok(response);
+        }
+        return ResponseEntity.accepted().build();
     }
 
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> loginUser(@RequestBody UserDTO request) {
         return ResponseEntity.ok(authenticationService.authenticate(request));
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "Welcome to Login Page.";
+    }
+
+    @PostMapping("/verify-code")
+    public ResponseEntity<?> verifyCode(@RequestBody VerificationRequest verificationRequest) {
+        return ResponseEntity.ok(authenticationService.verifyCode(verificationRequest));
     }
 
     @PostMapping("/refresh-token")

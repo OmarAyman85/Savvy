@@ -11,5 +11,7 @@ public class UserDTO {
     private String firstName;
     private String lastName;
     private String password;
+    private boolean mfaEnabled;
+//    private String secret;
     private Role role;
 }

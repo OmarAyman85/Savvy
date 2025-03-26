@@ -1,9 +1,11 @@
 package com.example.savvy.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class AuthenticationResponse {
 
     @JsonProperty("access_token")
@@ -12,12 +14,20 @@ public class AuthenticationResponse {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
-    public AuthenticationResponse(String accessToken, String refreshToken) {
+    private boolean mfaEnabled;
+
+    private String secretImageUri;
+
+    public AuthenticationResponse(String accessToken, String refreshToken, boolean mfaEnabled) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
+        this.mfaEnabled = mfaEnabled;
     }
 
-    public AuthenticationResponse(String accessToken) {
+    public AuthenticationResponse(String accessToken, String refreshToken, boolean mfaEnabled, String secretImageUri) {
         this.accessToken = accessToken;
+        this.refreshToken = refreshToken;
+        this.mfaEnabled = mfaEnabled;
+        this.secretImageUri = secretImageUri;
     }
 }
