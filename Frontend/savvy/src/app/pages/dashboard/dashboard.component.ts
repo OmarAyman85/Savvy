@@ -1,11 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { WidgetComponent } from '../../components/widget/widget.component';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  standalone: true,
+  imports: [WidgetComponent],
+  providers: [DashboardService],
   templateUrl: './dashboard.component.html',
-  styles: ``
+  styles: `.dashboard-widgets{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }`,
 })
 export class DashboardComponent {
-
+  store = inject(DashboardService).widgets();
 }
