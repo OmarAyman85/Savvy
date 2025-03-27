@@ -129,7 +129,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         var token = jwtService.generateToken(user);
         revokeAllUserTokens(user);
         saveUserToken(token, user);
-        
+
         return new AuthenticationResponse(token, null, user.isMfaEnabled());
     }
 
