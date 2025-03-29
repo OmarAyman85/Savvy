@@ -43,6 +43,24 @@ import { DashboardService } from '../../services/dashboard.service';
       color: rgb(85, 65, 81);
       transition: background-color 0.3s;
     }
+
+    .move-forward-button{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: -5px;
+      color: rgb(85, 65, 81);
+      transition: background-color 0.3s;
+    }
+
+    .move-backward-button{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: -5px;
+      color: rgb(85, 65, 81);
+      transition: background-color 0.3s;
+    }
   `,
 })
 export class WidgetOptionsComponent {

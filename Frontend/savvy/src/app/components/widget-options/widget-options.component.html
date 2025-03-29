@@ -29,3 +29,19 @@
     <mat-button-toggle [value]="4">4</mat-button-toggle>
   </mat-button-toggle-group>
 </div>
+
+<button
+  mat-icon-button
+  class="move-forward-button"
+  (click)="store.moveWidgetToRight(data().id)"
+>
+  <mat-icon>chevron_right</mat-icon>
+</button>
+
+<button
+  mat-icon-button
+  class="move-backward-button"
+  (click)="store.moveWidgetToLeft(data().id)"
+>
+  <mat-icon>chevron_left</mat-icon>
+</button>
