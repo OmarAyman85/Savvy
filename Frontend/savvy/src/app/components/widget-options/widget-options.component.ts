@@ -61,6 +61,15 @@ import { DashboardService } from '../../services/dashboard.service';
       color: rgb(85, 65, 81);
       transition: background-color 0.3s;
     }
+
+    .remove-button{
+      position: absolute;
+      top: 25px;
+      transform: translateY(-50%);
+      left: 10px;
+      color: #cc0000;
+      transition: background-color 0.3s;
+    }
   `,
 })
 export class WidgetOptionsComponent {
