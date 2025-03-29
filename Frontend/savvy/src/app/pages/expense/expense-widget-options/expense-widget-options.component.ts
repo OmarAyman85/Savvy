@@ -3,13 +3,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { Widget } from '../../../models/dashboard';
-import { IncomeService } from '../../../services/income.service';
+import { ExpenseService } from '../../../services/expense.service';
 
 @Component({
-  selector: 'app-income-widget-options',
+  selector: 'app-expense-widget-options',
   imports: [MatButtonModule, MatIcon, MatButtonToggleModule],
   standalone: true,
-  templateUrl: './income-widget-options.component.html',
+  templateUrl: './expense-widget-options.component.html',
   styles: `
   :host{
     position: absolute;
@@ -73,8 +73,8 @@ import { IncomeService } from '../../../services/income.service';
     }
   `,
 })
-export class IncomeWidgetOptionsComponent {
+export class ExpenseWidgetOptionsComponent {
   data = input.required<Widget>();
   showOptions = model<boolean>(false);
-  store = inject(IncomeService);
+  store = inject(ExpenseService);
 }

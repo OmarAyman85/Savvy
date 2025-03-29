@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController  // Marks this class as a Spring MVC REST Controller (handles HTTP requests)
 @RequestMapping("/api/expense")  // Defines the base URL path for all endpoints in this controller
 @RequiredArgsConstructor  // Lombok annotation to generate a constructor with final fields (Dependency Injection)
-@CrossOrigin("*")  // Enables Cross-Origin Resource Sharing (CORS) for all origins
+@CrossOrigin(origins = "http://localhost:4200")
 public class ExpenseController {
 
     private final ExpenseService expenseService;  // Injecting ExpenseService to handle business logic

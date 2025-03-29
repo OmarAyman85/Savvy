@@ -15,7 +15,11 @@ export class IncomeService {
 
   fetchWidgets() {
     this.http.get<Widget[]>('http://localhost:8080/api/income/all').subscribe({
-      next: (data) => this.addedWidgets.set(data),
+      next: (data) => {
+        this.widgets.set(data);
+        this.addedWidgets.set(data);
+        // this.addedWidgets.set(data.slice(0, 100));
+      },
       error: (err) => console.error('Error fetching widgets', err),
     });
   }

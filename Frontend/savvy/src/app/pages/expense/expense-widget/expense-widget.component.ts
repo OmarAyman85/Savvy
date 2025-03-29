@@ -1,13 +1,14 @@
 import { Component, input, signal } from '@angular/core';
-import { Widget } from '../../../models/dashboard';
+import { ExpenseWidgetOptionsComponent } from '../expense-widget-options/expense-widget-options.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { WidgetOptionsComponent } from '../widget-options/widget-options.component';
+import { Widget } from '../../../models/dashboard';
 
 @Component({
-  selector: 'app-widget',
-  imports: [MatButtonModule, MatIcon, WidgetOptionsComponent],
-  templateUrl: './widget.component.html',
+  selector: 'app-expense-widget',
+  imports: [MatButtonModule, MatIcon, ExpenseWidgetOptionsComponent],
+  standalone: true,
+  templateUrl: './expense-widget.component.html',
   styles: `
   :host{
     display: block;
@@ -42,7 +43,7 @@ import { WidgetOptionsComponent } from '../widget-options/widget-options.compone
     '[style.grid-column]': '"span " + (data().columns ?? 1)',
   },
 })
-export class WidgetComponent {
+export class ExpenseWidgetComponent {
   data = input.required<Widget>();
   showOptions = signal(false);
 }
