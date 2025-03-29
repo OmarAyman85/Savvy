@@ -8,4 +8,7 @@ export interface Widget {
 
   rows?: number;
   columns?: number;
+
+  backgroundColor?: string;
+  color?: string;
 }

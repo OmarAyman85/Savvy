@@ -48,6 +48,8 @@ export class DashboardService {
       category: 'Dashboard',
       amount: 100,
       date: new Date(),
+      backgroundColor: '#000000',
+      color: '#ffffff',
     },
     {
       id: 2,
