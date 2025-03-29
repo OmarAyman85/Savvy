@@ -19,7 +19,10 @@
   </button>
 
   @if (showOptions()) {
-  <app-widget-options [(showOptions)]="showOptions" [data]="data()" />
+  <app-widget-options
+    [(showOptions)]="showOptions"
+    [data]="data()"
+  ></app-widget-options>
 
   }
 </div>

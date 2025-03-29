@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { WidgetComponent } from '../../components/widget/widget.component';
+import { IncomeWidgetComponent } from '../income/income-widget/income-widget.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -7,7 +7,8 @@ import { IncomeService } from '../../services/income.service';
 
 @Component({
   selector: 'app-income',
-  imports: [WidgetComponent, MatButtonModule, MatIcon, MatMenuModule],
+  standalone: true,
+  imports: [IncomeWidgetComponent, MatButtonModule, MatIcon, MatMenuModule],
   providers: [IncomeService],
   templateUrl: './income.component.html',
   styles: `
