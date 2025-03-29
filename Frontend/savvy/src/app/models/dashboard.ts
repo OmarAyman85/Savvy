@@ -5,4 +5,7 @@ export interface Widget {
   category: string;
   amount: number;
   date: Date;
+
+  rows?: number;
+  columns?: number;
 }

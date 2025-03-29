@@ -1,7 +1,23 @@
-<p>dashboard works!</p>
+<div class="header">
+  <p>dashboard Page!</p>
+  <button mat-raised-button [mat-menu-trigger-for]="widgetMenu">
+    <mat-icon> add_circle </mat-icon> add widget
+  </button>
+
+  <mat-menu #widgetMenu="matMenu">
+    @for (wi of store.widgetsToAdd(); track wi.id) {
+    <button mat-menu-item (click)="store.addWidget(wi)">
+      {{ wi.title }}
+    </button>
+    } @empty {
+    <button mat-menu-item>No Widgets to be added</button>
+    }
+  </mat-menu>
+</div>
 
 <div class="dashboard-widgets">
-  @for (w of store; track w.id) {
+  @for (w of store.addedWidgets(); track w.id) {
   <app-widget [data]="w" />
+
   }
 </div>
